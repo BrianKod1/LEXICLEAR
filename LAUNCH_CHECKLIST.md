@@ -30,8 +30,18 @@ DATABASE_URL=
 AUTH_SECRET=
 AUTH_URL=
 NEXT_PUBLIC_CREATE_APP_URL=
+EXPO_PUBLIC_WEB_URL=
 STRIPE_SECRET_KEY=
 STRIPE_WEBHOOK_SECRET=
+```
+
+Vercel settings:
+
+```text
+Root Directory: apps/web
+Install Command: npm install
+Build Command: npm run build
+Framework Preset: React Router
 ```
 
 Database:
@@ -72,7 +82,7 @@ Stripe:
 
 ## Mobile App Store Path
 
-1. Replace placeholder URLs in `apps/mobile/src/app/index.jsx`.
+1. Set `EXPO_PUBLIC_WEB_URL` to the deployed LexiClear web URL.
 2. Add real app icons and splash assets.
 3. Configure EAS project details in `apps/mobile/eas.json`.
 4. Add privacy policy and terms URLs.
@@ -81,14 +91,10 @@ Stripe:
 
 ## GitHub Sync
 
-This local folder currently does not contain a `.git` directory. To sync:
+After Codex edits files, push the next commit from Git Bash:
 
 ```bash
-git init
-git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
 git add .
-git commit -m "Prepare LexiClear demo and embed MVP"
-git push -u origin main
+git commit -m "Prepare LexiClear deployment"
+git push
 ```
-
-If this is already inside a different cloned repository on your machine, copy the updated `anything/` files into that cloned repo before committing.

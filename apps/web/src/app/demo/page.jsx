@@ -122,15 +122,17 @@ export default function DemoPage() {
   const [sampleIndex, setSampleIndex] = useState(0);
   const [showResult, setShowResult] = useState(true);
   const sample = samples[sampleIndex];
+  const embedOrigin =
+    typeof window !== "undefined" ? window.location.origin : "https://lexiclear.app";
   const snippet = useMemo(
     () => `<iframe
-  src="https://lexiclear.example/embed?key=demo_key"
+  src="${embedOrigin}/embed?key=demo_key"
   width="100%"
   height="600"
   frameborder="0"
   title="LexiClear Legal Analyzer"
 ></iframe>`,
-    [],
+    [embedOrigin],
   );
 
   return (

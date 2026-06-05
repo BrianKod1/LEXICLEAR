@@ -1,7 +1,8 @@
 import { Linking, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { FileText, Globe, Search, ShieldCheck, Zap } from "lucide-react-native";
 
-const demoUrl = "https://lexiclear.example/demo";
+const webUrl = process.env.EXPO_PUBLIC_WEB_URL || "https://lexiclear.app";
+const demoUrl = `${webUrl}/demo`;
 
 export default function Index() {
   return (
@@ -35,7 +36,7 @@ export default function Index() {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.secondaryButton}
-          onPress={() => Linking.openURL("https://lexiclear.example/embed")}
+          onPress={() => Linking.openURL(`${webUrl}/embed`)}
         >
           <Globe color="#2563eb" size={18} />
           <Text style={styles.secondaryButtonText}>Company embed</Text>
