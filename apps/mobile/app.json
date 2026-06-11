@@ -13,7 +13,8 @@
       "buildNumber": "1",
       "supportsTablet": true,
       "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSSpeechRecognitionUsageDescription": "LexiClear may use speech recognition to let you dictate contract text for plain-English review."
       }
     },
     "android": {
