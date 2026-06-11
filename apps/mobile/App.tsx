@@ -1,3 +1,3 @@
-import { App } from 'expo-router/build/qualified-entry';
+import App from './src/app';
 
 export default App
