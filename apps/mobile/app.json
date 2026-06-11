@@ -1,6 +1,8 @@
 {
   "expo": {
     "name": "LexiClear",
+    "slug": "lexiclear",
+    "scheme": "lexiclear",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -8,6 +10,7 @@
     "newArchEnabled": true,
     "ios": {
       "bundleIdentifier": "com.lexiclear.app",
+      "buildNumber": "1",
       "supportsTablet": true,
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
@@ -19,7 +22,8 @@
         "backgroundColor": "#ffffff"
       },
       "permissions": [],
-      "package": "com.lexiclear.app"
+      "package": "com.lexiclear.app",
+      "versionCode": 1
     },
     "plugins": [
       [
