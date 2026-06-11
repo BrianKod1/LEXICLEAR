@@ -1,5 +1,19 @@
-import { Linking, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { FileText, Globe, Search, ShieldCheck, Zap } from "lucide-react-native";
+import {
+  Linking,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import {
+  ExternalLink,
+  FileText,
+  Globe,
+  Search,
+  ShieldCheck,
+  Zap,
+} from "lucide-react-native";
 
 const webUrl = process.env.EXPO_PUBLIC_WEB_URL || "https://lexiclear.app";
 const demoUrl = `${webUrl}/demo`;
@@ -72,6 +86,23 @@ export default function Index() {
         AI-generated summaries are educational and are not professional legal
         advice.
       </Text>
+
+      <View style={styles.footerLinks}>
+        <TouchableOpacity
+          style={styles.footerLink}
+          onPress={() => Linking.openURL(`${webUrl}/privacy`)}
+        >
+          <ExternalLink color="#2563eb" size={13} />
+          <Text style={styles.footerLinkText}>Privacy Policy</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.footerLink}
+          onPress={() => Linking.openURL(`${webUrl}/terms`)}
+        >
+          <ExternalLink color="#2563eb" size={13} />
+          <Text style={styles.footerLinkText}>Terms</Text>
+        </TouchableOpacity>
+      </View>
     </ScrollView>
   );
 }
@@ -203,5 +234,21 @@ const styles = StyleSheet.create({
     fontSize: 11,
     lineHeight: 16,
     marginTop: 24,
+  },
+  footerLinks: {
+    flexDirection: "row",
+    gap: 18,
+    marginTop: 18,
+    paddingBottom: 24,
+  },
+  footerLink: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
+  },
+  footerLinkText: {
+    color: "#2563eb",
+    fontSize: 12,
+    fontWeight: "700",
   },
 });
