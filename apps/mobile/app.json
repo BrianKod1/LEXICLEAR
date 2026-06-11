@@ -40,7 +40,6 @@
           "resizeMode": "contain"
         }
       ],
-      "expo-audio",
       [
         "expo-build-properties",
         {
@@ -48,10 +47,6 @@
             "useFrameworks": "static"
           }
         }
-      ],
-      [
-        "expo-video",
-        { "supportsBackgroundPlayback": true, "supportsPictureInPicture": true }
       ],
       "expo-font",
       "expo-secure-store",
@@ -66,7 +61,11 @@
     },
     "extra": {
       "router": {
-        "origin": false
+        "origin": false,
+        "sitemap": false
+      },
+      "eas": {
+        "projectId": "14ea82ae-0fbe-41a4-9533-be3472fd81c9"
       }
     }
   }

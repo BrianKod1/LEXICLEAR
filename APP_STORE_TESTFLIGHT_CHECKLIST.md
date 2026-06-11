@@ -74,9 +74,9 @@ Run these from Git Bash:
 ```bash
 cd ~/Downloads/anything/anything/apps/mobile
 npm install
-npx eas login
-EXPO_PUBLIC_WEB_URL=https://lexiclear-two.vercel.app npx eas build --platform ios --profile production
-EXPO_PUBLIC_WEB_URL=https://lexiclear-two.vercel.app npx eas submit --platform ios --profile production
+npx --yes eas-cli login
+EXPO_PUBLIC_WEB_URL=https://lexiclear-two.vercel.app npx --yes eas-cli build --platform ios --profile production
+EXPO_PUBLIC_WEB_URL=https://lexiclear-two.vercel.app npx --yes eas-cli submit --platform ios --profile production
 ```
 
 During the iOS build, EAS may ask permission to create or use Apple certificates and provisioning profiles. Say yes if the Apple Developer account is ready.
