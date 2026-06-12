@@ -18,7 +18,7 @@ import {
 
 const webUrl = "https://lexiclear-two.vercel.app";
 const demoUrl = `${webUrl}/demo`;
-const companyEmbedUrl = `${webUrl}/embed-manager`;
+const companyEmbedUrl = `${webUrl}/company-embed`;
 
 async function openExternalUrl(url) {
   try {
