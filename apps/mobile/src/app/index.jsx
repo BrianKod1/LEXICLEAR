@@ -1,4 +1,5 @@
 import {
+  Alert,
   Linking,
   ScrollView,
   StyleSheet,
@@ -15,8 +16,17 @@ import {
   Zap,
 } from "lucide-react-native";
 
-const webUrl = process.env.EXPO_PUBLIC_WEB_URL || "https://lexiclear.app";
+const webUrl = "https://lexiclear-two.vercel.app";
 const demoUrl = `${webUrl}/demo`;
+const companyEmbedUrl = `${webUrl}/embed-manager`;
+
+async function openExternalUrl(url) {
+  try {
+    await Linking.openURL(url);
+  } catch (_error) {
+    Alert.alert("Could not open link", url);
+  }
+}
 
 export default function Index() {
   return (
@@ -43,14 +53,14 @@ export default function Index() {
       <View style={styles.actions}>
         <TouchableOpacity
           style={styles.primaryButton}
-          onPress={() => Linking.openURL(demoUrl)}
+          onPress={() => openExternalUrl(demoUrl)}
         >
           <FileText color="#fff" size={18} />
           <Text style={styles.primaryButtonText}>Open demo</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.secondaryButton}
-          onPress={() => Linking.openURL(`${webUrl}/embed`)}
+          onPress={() => openExternalUrl(companyEmbedUrl)}
         >
           <Globe color="#2563eb" size={18} />
           <Text style={styles.secondaryButtonText}>Company embed</Text>
@@ -90,14 +100,14 @@ export default function Index() {
       <View style={styles.footerLinks}>
         <TouchableOpacity
           style={styles.footerLink}
-          onPress={() => Linking.openURL(`${webUrl}/privacy`)}
+          onPress={() => openExternalUrl(`${webUrl}/privacy`)}
         >
           <ExternalLink color="#2563eb" size={13} />
           <Text style={styles.footerLinkText}>Privacy Policy</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.footerLink}
-          onPress={() => Linking.openURL(`${webUrl}/terms`)}
+          onPress={() => openExternalUrl(`${webUrl}/terms`)}
         >
           <ExternalLink color="#2563eb" size={13} />
           <Text style={styles.footerLinkText}>Terms</Text>
