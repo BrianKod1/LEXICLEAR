@@ -18,7 +18,6 @@ import {
   Zap,
 } from "lucide-react";
 import useUser from "@/utils/useUser";
-import { useSubscription } from "@/utils/useSubscription";
 
 export default function EmbedManager() {
   const [keys, setKeys] = useState([]);
@@ -32,24 +31,14 @@ export default function EmbedManager() {
   const [selectedKey, setSelectedKey] = useState(null);
 
   const { data: user, loading: userLoading } = useUser();
-  const {
-    isSubscribed,
-    loading: subLoading,
-    manageSubscription,
-  } = useSubscription();
 
   useEffect(() => {
     if (!userLoading && !user) window.location.href = "/account/signin";
   }, [user, userLoading]);
 
   useEffect(() => {
-    if (!subLoading && isSubscribed === false && user)
-      window.location.href = "/pricing";
-  }, [isSubscribed, subLoading, user]);
-
-  useEffect(() => {
-    if (isSubscribed) fetchKeys();
-  }, [isSubscribed]);
+    if (user) fetchKeys();
+  }, [user]);
 
   const fetchKeys = async () => {
     try {
@@ -135,7 +124,7 @@ export default function EmbedManager() {
 ></iframe>`;
   };
 
-  if (userLoading || subLoading) {
+  if (userLoading) {
     return (
       <div className="min-h-screen bg-[#F9FAFB] flex items-center justify-center">
         <Loader2

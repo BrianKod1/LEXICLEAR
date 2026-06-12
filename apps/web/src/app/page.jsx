@@ -27,22 +27,13 @@ export default function Dashboard() {
 
   const { data: user, loading: userLoading } = useUser();
   const {
-    isSubscribed,
     statusStr,
-    loading: subLoading,
     manageSubscription,
   } = useSubscription();
 
-  // Redirect unsubscribed (but authenticated) users to pricing
   useEffect(() => {
-    if (!subLoading && isSubscribed === false && user) {
-      window.location.href = "/pricing";
-    }
-  }, [isSubscribed, subLoading, user]);
-
-  useEffect(() => {
-    if (isSubscribed) fetchDocuments();
-  }, [isSubscribed]);
+    if (user) fetchDocuments();
+  }, [user]);
 
   const fetchDocuments = async () => {
     try {
@@ -80,8 +71,8 @@ export default function Dashboard() {
     return <LandingPage />;
   }
 
-  // Loading spinner while checking auth/subscription
-  if (userLoading || subLoading || (!isSubscribed && user)) {
+  // Loading spinner while checking auth
+  if (userLoading) {
     return (
       <div className="min-h-screen bg-[#F9FAFB] flex items-center justify-center">
         <Loader2

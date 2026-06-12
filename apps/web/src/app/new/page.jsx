@@ -11,7 +11,6 @@ import {
   Zap,
 } from "lucide-react";
 import useUser from "@/utils/useUser";
-import { useSubscription } from "@/utils/useSubscription";
 
 export default function NewAnalysis() {
   const [title, setTitle] = useState("");
@@ -20,16 +19,10 @@ export default function NewAnalysis() {
   const [error, setError] = useState(null);
 
   const { data: user, loading: userLoading } = useUser();
-  const { isSubscribed, loading: subLoading } = useSubscription();
 
   useEffect(() => {
     if (!userLoading && !user) window.location.href = "/account/signin";
   }, [user, userLoading]);
-
-  useEffect(() => {
-    if (!subLoading && isSubscribed === false && user)
-      window.location.href = "/pricing";
-  }, [isSubscribed, subLoading, user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -60,7 +53,7 @@ export default function NewAnalysis() {
     }
   };
 
-  if (userLoading || subLoading) {
+  if (userLoading) {
     return (
       <div className="min-h-screen bg-[#F9FAFB] flex items-center justify-center">
         <Loader2
